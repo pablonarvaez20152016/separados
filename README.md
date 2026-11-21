@@ -16,7 +16,7 @@ Los registros se cifran en el navegador con AES-256-GCM y una clave derivada de 
 
 ## Uso
 
-Registra cliente, teléfono, descripción, valor, vencimiento y abono inicial. Agrega abonos desde la tarjeta; cuando el saldo llega a cero aparece como pagado. Las alertas de vencimiento se calculan al abrir o usar la página; no hay notificaciones automáticas con la página cerrada. El botón **Preparar SMS** pide confirmación y abre la aplicación de mensajes del dispositivo con un borrador. La entrega requiere que el dispositivo admita enlaces SMS y que confirmes el envío allí; el servicio puede generar cargos. No se envían mensajes automáticamente ni se registra su entrega.
+Registra cliente, teléfono, descripción, valor y abono inicial. El vencimiento inicial se calcula a un mes calendario desde la creación (si el siguiente mes no tiene ese día, se usa su último día). Los abonos no cambian el plazo. Para un caso excepcional, usa **Extender por excepción**: se proponen 15 días desde el vencimiento actual, puedes elegir una fecha posterior y debes registrar un motivo. El historial aparece en **Ver abonos**. Los separados existentes conservan su vencimiento. Agrega abonos desde la tarjeta; cuando el saldo llega a cero aparece como pagado. Las alertas de vencimiento se calculan al abrir o usar la página; no hay notificaciones automáticas con la página cerrada. El botón **Preparar SMS** pide confirmación y abre la aplicación de mensajes del dispositivo con un borrador. La entrega requiere que el dispositivo admita enlaces SMS y que confirmes el envío allí; el servicio puede generar cargos. No se envían mensajes automáticamente ni se registra su entrega.
 
 ## Relación con el sistema actual
 
