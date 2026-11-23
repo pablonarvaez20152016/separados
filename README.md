@@ -23,3 +23,7 @@ Registra cliente, teléfono, descripción, valor y abono inicial. El vencimiento
 En el proyecto existente, `SeparatedPage.tsx` agrupa prendas, registra abonos y presenta el saldo. El servidor maneja abonos, movimientos de caja, inventario y liberación al vencer; algunas consultas ejecutan la liberación. Esta aplicación conserva un control independiente para no provocar esos efectos. Si se requiere sincronización real, hace falta un servidor accesible por HTTPS con autenticación y autorización del propietario, y acordar cómo integrar de forma segura las operaciones existentes.
 
 Para invitar a una clienta a seguir las redes de Koquetas Boutique, pulsa **Invitar a redes** en su tarjeta. La aplicación prepara un mensaje con los enlaces de TikTok e Instagram y abre la aplicación de SMS para revisarlo y enviarlo manualmente. La app no envía mensajes automáticamente ni comprueba su entrega.
+
+## Importar contactos de Google
+
+En contacts.google.com selecciona los contactos y usa Exportar → CSV de Google. En la aplicación usa **Importar contactos CSV**. Solo se importan nombre y primer teléfono, se omiten contactos sin esos datos y se evitan duplicados por nombre y teléfono. Puedes seleccionar un contacto al crear un separado o preparar una invitación desde la lista. Los contactos se cifran y se incluyen en la copia de seguridad; el archivo CSV exportado de Google no está cifrado por esta aplicación. No hay sincronización automática con Google.
