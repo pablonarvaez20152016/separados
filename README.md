@@ -21,3 +21,5 @@ Registra cliente, teléfono, descripción, valor y abono inicial. El vencimiento
 ## Relación con el sistema actual
 
 En el proyecto existente, `SeparatedPage.tsx` agrupa prendas, registra abonos y presenta el saldo. El servidor maneja abonos, movimientos de caja, inventario y liberación al vencer; algunas consultas ejecutan la liberación. Esta aplicación conserva un control independiente para no provocar esos efectos. Si se requiere sincronización real, hace falta un servidor accesible por HTTPS con autenticación y autorización del propietario, y acordar cómo integrar de forma segura las operaciones existentes.
+
+Para invitar a una clienta a seguir las redes de Koquetas Boutique, pulsa **Invitar a redes** en su tarjeta. La aplicación prepara un mensaje con los enlaces de TikTok e Instagram y abre la aplicación de SMS para revisarlo y enviarlo manualmente. La app no envía mensajes automáticamente ni comprueba su entrega.
