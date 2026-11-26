@@ -27,3 +27,5 @@ Para invitar a una clienta a seguir las redes de Koquetas Boutique, pulsa **Invi
 ## Importar contactos de Google
 
 En contacts.google.com selecciona los contactos y usa Exportar → CSV de Google. En la aplicación usa **Importar contactos CSV**. Solo se importan nombre y primer teléfono, se omiten contactos sin esos datos y se evitan duplicados por nombre y teléfono. Puedes seleccionar un contacto al crear un separado o preparar una invitación desde la lista. Los contactos se cifran y se incluyen en la copia de seguridad; el archivo CSV exportado de Google no está cifrado por esta aplicación. No hay sincronización automática con Google.
+
+En la lista de contactos, después de enviar el SMS desde el celular, usa **Marcar como enviado** para confirmar el envío; la marca se guarda cifrada y se incluye en la copia de seguridad. Puedes desmarcarla si fue un error. Abrir el borrador no confirma que el mensaje se haya enviado.
