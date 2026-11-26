@@ -30,8 +30,8 @@ En contacts.google.com selecciona los contactos y usa Exportar → CSV de Google
 
 En la lista de contactos, después de enviar el SMS desde el celular, usa **Marcar como enviado** para confirmar el envío; la marca se guarda cifrada y se incluye en la copia de seguridad. Puedes desmarcarla si fue un error. Abrir el borrador no confirma que el mensaje se haya enviado.
 
-## Código de recuperación y copia al bloquear
+## Código de recuperación y copia al salir
 
 Con la aplicación desbloqueada, usa **Crear código de recuperación**, guárdalo en un lugar seguro y escríbelo para confirmarlo. El código permite cambiar la contraseña si la olvidas. Solo funciona para los datos o copias que se hayan guardado después de activarlo. Un código nuevo invalida el anterior para copias posteriores; conserva el anterior si necesitas abrir copias antiguas. El código y la copia deben guardarse por separado.
 
-Para salir, pulsa **Bloquear**. En navegadores compatibles elige un archivo de copia cifrada; selecciona el mismo y confirma su reemplazo para mantener una única copia. En otros navegadores se inicia una descarga y el sistema puede agregar números al nombre: debes reemplazar el archivo anterior manualmente. Cancelar el selector mantiene la aplicación abierta. Cerrar la pestaña o el navegador no garantiza una copia. Para recuperar, usa **Recuperar con código** en la pantalla de acceso y, si es necesario, selecciona una copia cifrada. La recuperación desde una copia reemplaza los datos locales tras confirmación.
+Para salir, pulsa **Salir**. En navegadores compatibles elige un archivo de copia cifrada; selecciona el mismo y confirma su reemplazo para mantener una única copia. En otros navegadores se inicia una descarga y el sistema puede agregar números al nombre: debes reemplazar el archivo anterior manualmente. Cancelar el selector mantiene la aplicación abierta. Cerrar la pestaña o el navegador no garantiza una copia. Para recuperar, usa **Recuperar con código** en la pantalla de acceso y, si es necesario, selecciona una copia cifrada. La recuperación desde una copia reemplaza los datos locales tras confirmación.
