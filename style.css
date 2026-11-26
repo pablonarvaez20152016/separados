@@ -9,3 +9,5 @@
 .password-field{position:relative}.password-field input{padding-right:52px}.password-toggle{position:absolute;right:4px;top:50%;transform:translateY(-50%);display:grid;place-items:center;padding:9px;background:transparent;color:#40534a}.password-toggle:focus-visible{outline:2px solid #78bca6}
 
 #authForm > button[type=submit], #authForm > button:not([type]){margin-top:16px}
+
+input[aria-invalid="true"]{border-color:#b32323;outline:2px solid #e9a2a2}.field-help{font-size:.82rem;margin:6px 0;color:#64716c}.field-error{font-size:.86rem;margin:6px 0}.field-error:empty{display:none}
