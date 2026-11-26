@@ -5,3 +5,5 @@
 .contact-row{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #e0e8e3;padding:10px 0}.contact-row button{padding:8px 12px}
 
 .social-sent{display:inline-block;margin:4px;background:#d9f3e4;color:#145d38}.social-pending{display:inline-block;margin:4px;background:#f1f3f2;color:#56665e}
+
+.password-field{position:relative}.password-field input{padding-right:52px}.password-toggle{position:absolute;right:4px;top:50%;transform:translateY(-50%);display:grid;place-items:center;padding:9px;background:transparent;color:#40534a}.password-toggle:focus-visible{outline:2px solid #78bca6}
