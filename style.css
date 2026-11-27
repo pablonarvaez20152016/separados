@@ -71,7 +71,10 @@ main:has(#app[hidden]) :is(#menuToggle, #newBtn) { display: none; }
 .reservations-table .amount { text-align: right; white-space: nowrap; }
 .reservations-table .date { white-space: nowrap; }
 .pending-amount { color: var(--brand-strong); font-weight: 700; }
-.row-actions summary { color: var(--brand-strong); cursor: pointer; font-weight: 650; }
+.quick-actions { display: flex; align-items: center; gap: 5px; }
+.quick-actions button { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 5px 8px; font-size: .88rem; }
+.quick-actions [data-action="details"] { min-width: 34px; }
+.row-actions summary { margin-top: 3px; color: var(--brand-strong); cursor: pointer; font-size: .82rem; font-weight: 650; }
 .row-actions .buttons { display: grid; gap: 4px; margin-top: 6px; }
 .row-actions button { padding: 5px 7px; font-size: .78rem; text-align: left; }
 .reservations-table .empty { padding: 16px; text-align: center; }
@@ -185,4 +188,17 @@ button:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outli
 }
 @media (min-width: 341px) and (max-width: 450px) {
   .topbar h1 { font-size: 1rem; line-height: 1.05; }
+}
+.editor-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.editor-heading h2 { margin-right: auto; }
+.editor-close { display: grid; place-items: center; flex: none; width: 36px; height: 36px; padding: 0; }
+.notification-table { width: 100%; min-width: 660px; border-collapse: collapse; }
+.notification-table :is(th, td) { padding: 9px; text-align: left; border-bottom: 1px solid var(--border); }
+.notification-table thead { background: var(--surface-muted); color: var(--brand-strong); }
+.notification-table .empty { text-align: center; }
+.reminder-message { padding: 12px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-muted); color: var(--text); }
+.reminder-links a:not([hidden]) { display: inline-block; padding: 8px 12px; border-radius: 8px; font-weight: 700; }
+.reminder-links a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+@media (max-width: 640px) {
+  #app.sidebar-collapsed .sidebar { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
