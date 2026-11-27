@@ -184,7 +184,7 @@ button:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outli
 @media (max-width: 640px) {
   .settings-items:not([hidden]) { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #app.sidebar-collapsed .sidebar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  #app.sidebar-collapsed .settings-items:not([hidden]) { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  #app.sidebar-collapsed .settings-items:not([hidden]) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 }
 @media (min-width: 341px) and (max-width: 450px) {
   .topbar h1 { font-size: 1rem; line-height: 1.05; }
@@ -201,4 +201,41 @@ button:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outli
 .reminder-links a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 @media (max-width: 640px) {
   #app.sidebar-collapsed .sidebar { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+#editor { max-width: 960px; }
+.editor-client { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.garment-fieldset {
+  min-inline-size: 0;
+  margin: 6px 0;
+  padding: 10px 12px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.garment-fieldset legend { padding: 0 5px; font-weight: 750; }
+.garment-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr) minmax(0, 1.15fr) minmax(72px, .65fr) minmax(130px, 1fr) auto;
+  align-items: end;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.garment-entry label { margin: 0; }
+#addGarment { width: 44px; height: 44px; padding: 0; font-size: 1.25rem; }
+.garment-table { width: 100%; min-width: 660px; border-collapse: collapse; font-size: .88rem; }
+.garment-table :is(th, td) { padding: 7px; border-bottom: 1px solid var(--border); text-align: left; overflow-wrap: anywhere; }
+.garment-table thead { background: var(--surface-muted); color: var(--brand-strong); }
+.garment-table .amount { text-align: right; white-space: nowrap; }
+.garment-table .empty { text-align: center; }
+.garment-actions { display: flex; gap: 4px; }
+.garment-actions button { padding: 5px 7px; font-size: .8rem; }
+.garment-total { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin: 10px 0 0; color: var(--text); }
+.garment-total output { color: var(--brand-strong); font-weight: 800; }
+@media (max-width: 720px) {
+  #editor { padding: 15px; }
+  .garment-entry { grid-template-columns: minmax(58px, .65fr) minmax(122px, 1.35fr) auto; }
+  .garment-entry label:nth-child(-n+3) { grid-column: 1 / -1; }
+}
+@media (max-width: 365px) {
+  .editor-client { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .garment-entry { grid-template-columns: minmax(49px, .6fr) minmax(85px, 1fr) auto; }
 }
