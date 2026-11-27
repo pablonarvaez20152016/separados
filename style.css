@@ -11,3 +11,26 @@
 #authForm > button[type=submit], #authForm > button:not([type]){margin-top:16px}
 
 input[aria-invalid="true"]{border-color:#b32323;outline:2px solid #e9a2a2}.field-help{font-size:.82rem;margin:6px 0;color:#64716c}.field-error{font-size:.86rem;margin:6px 0}.field-error:empty{display:none}
+
+#app:not([hidden]) {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: start;
+  gap: 20px;
+}
+.sidebar {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  position: sticky;
+  top: 16px;
+}
+.sidebar button { text-align: left; }
+.sidebar .sidebar-action { margin-left: 10px; }
+.sidebar [aria-current="page"] { background: #176e5a; color: white; }
+#clientMatch:empty { display: none; }
+@media (max-width: 700px) {
+  #app:not([hidden]) { grid-template-columns: minmax(0, 1fr); }
+  .sidebar { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sidebar .sidebar-action { margin-left: 0; }
+}
