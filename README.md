@@ -8,7 +8,13 @@ Aplicación independiente para controlar separados y abonos. El proyecto origina
 2. En GitHub, abre **Settings → Pages**, selecciona **Deploy from a branch**, rama `main` y carpeta `/ (root)`; guarda.
 3. Abre la dirección HTTPS que muestra Pages y crea una contraseña de al menos 12 caracteres. Comparte la URL solo si lo deseas: GitHub Pages puede ser público, pero los datos se cifran localmente.
 
-Para ejecutar localmente, sirve la carpeta desde `localhost`, por ejemplo `python -m http.server 8000`, y abre `http://localhost:8000`. No abras el archivo directamente.
+Para probar en local, instala Node.js y abre PowerShell en la carpeta del proyecto. Ejecuta:
+
+```powershell
+node .\servidor.cjs
+```
+
+Abre [Separados en local](http://localhost:8000). Mantén PowerShell abierto mientras pruebas. Pulsa Ctrl+C para detener el servidor.
 
 ## Seguridad y respaldo
 

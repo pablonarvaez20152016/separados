@@ -1,7 +1,7 @@
 ﻿const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
-const files = { '/': ['index.html', 'text/html; charset=utf-8'], '/index.html': ['index.html', 'text/html; charset=utf-8'], '/app.js': ['app.js', 'text/javascript; charset=utf-8'], '/style.css': ['style.css', 'text/css; charset=utf-8'] };
+const files = { '/': ['index.html', 'text/html; charset=utf-8'], '/index.html': ['index.html', 'text/html; charset=utf-8'], '/app.js': ['app.js', 'text/javascript; charset=utf-8'], '/style.css': ['style.css', 'text/css; charset=utf-8'], '/logo-koquetas.png': ['logo-koquetas.png', 'image/png'], '/icono-koquetas.png': ['icono-koquetas.png', 'image/png'] };
 http.createServer((req, res) => {
   const entry = files[new URL(req.url, 'http://localhost').pathname];
   if (!entry) { res.writeHead(404); return res.end('No encontrado'); }
