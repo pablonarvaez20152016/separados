@@ -83,6 +83,17 @@ menuToggle.onclick = () => {
   menuToggle.setAttribute('aria-label', collapsed ? 'Expandir menú' : 'Comprimir menú');
 };
 
+const settingsToggle = $('settingsToggle');
+function setSettingsOpen(open) {
+  $('settingsItems').hidden = !open;
+  settingsToggle.setAttribute('aria-expanded', String(open));
+}
+settingsToggle.onclick = () => setSettingsOpen($('settingsItems').hidden);
+$('sidebarCreate').onclick = () => {
+  showView('reservationsView');
+  $('newBtn').click();
+};
+
 function showView(id) {
   $('newBtn').hidden = id !== 'reservationsView';
   window.scrollTo(0, 0);
@@ -97,7 +108,9 @@ $('sidebarImport').onclick = () => {
   showView('contactsView');
   $('contactsImport').click();
 };
-$('contactsImportButton').onclick = () => $('contactsImport').click();
+document.querySelectorAll('[data-file]').forEach(button => {
+  button.onclick = () => $(button.dataset.file).click();
+});
 $('sidebarExport').onclick = () => {
   showView('contactsView');
   $('contactsExport').click();
@@ -167,7 +180,7 @@ $('contactsExport').onclick = () => {
   downloadFile('\uFEFF' + ['Name,Phone 1 - Value', ...rows].join('\r\n'), 'text/csv;charset=utf-8', 'separados-contactos.csv');
 };
 
-function locked(){showView('reservationsView');document.querySelectorAll('[data-password]').forEach(button=>{const input=$(button.dataset.password);input.type='password';button.setAttribute('aria-pressed','false');button.setAttribute('aria-label',input.id==='passwordConfirm'?'Mostrar contraseña de confirmación':'Mostrar contraseña');});key=null;salt=null;recoveryKey=null;data=[];contacts=[];$('app').hidden=true;$('auth').hidden=false;$('lock').hidden=true;$('password').value='';$('passwordConfirm').value=''; const exists=!!localStorage.getItem(storageKey);$('authTitle').textContent=exists?'Abrir tu información':'Crea tu contraseña';$('authHelp').textContent=exists?'Ingresa la contraseña de este dispositivo.':'Usa al menos 12 caracteres. Si la olvidas, no podrás recuperar los datos.';$('confirmLabel').hidden=exists;$('passwordConfirm').required=!exists;}
+function locked(){setSettingsOpen(false);showView('reservationsView');document.querySelectorAll('[data-password]').forEach(button=>{const input=$(button.dataset.password);input.type='password';button.setAttribute('aria-pressed','false');button.setAttribute('aria-label',input.id==='passwordConfirm'?'Mostrar contraseña de confirmación':'Mostrar contraseña');});key=null;salt=null;recoveryKey=null;data=[];contacts=[];$('app').hidden=true;$('auth').hidden=false;$('lock').hidden=true;$('password').value='';$('passwordConfirm').value=''; const exists=!!localStorage.getItem(storageKey);$('authTitle').textContent=exists?'Abrir tu información':'Crea tu contraseña';$('authHelp').textContent=exists?'Ingresa la contraseña de este dispositivo.':'Usa al menos 12 caracteres. Si la olvidas, no podrás recuperar los datos.';$('confirmLabel').hidden=exists;$('passwordConfirm').required=!exists;}
 $('authForm').onsubmit=async e=>{e.preventDefault();$('authError').textContent='';try{if(!window.isSecureContext||!crypto.subtle)throw Error('Abre la aplicación en HTTPS o localhost.');const pass=$('password').value, raw=localStorage.getItem(storageKey);if(raw){const v=await openVault(raw,pass);data=v.result;contacts=v.contacts;key=v.k;salt=v.s;recoveryKey=v.recoveryKey;}else{if(pass!==$('passwordConfirm').value)throw Error('Las contraseñas no coinciden.');salt=crypto.getRandomValues(new Uint8Array(16));key=await derive(pass,salt);data=[];contacts=[];await save();}$('password').value='';$('passwordConfirm').value='';$('auth').hidden=true;$('app').hidden=false;$('lock').hidden=false;render();renderContacts();}catch(err){$('authError').textContent=err.name==='OperationError'?'Contraseña incorrecta o copia dañada.':err.message;}};
 $('lock').onclick=async()=>{const raw=localStorage.getItem(storageKey);if(!raw){locked();return;}try{if(window.showSaveFilePicker){const handle=await window.showSaveFilePicker({suggestedName:'separados-copia-cifrada.json',types:[{description:'Copia cifrada',accept:{'application/json':['.json']}}]});const writer=await handle.createWritable();await writer.write(raw);await writer.close();}else{const url=URL.createObjectURL(new Blob([raw],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='separados-copia-cifrada.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);alert('Se inició la descarga. Comprueba que la copia se guardó; el navegador puede añadir un número al nombre.');}locked();}catch(err){if(err.name!=='AbortError')alert('No se pudo guardar la copia. La aplicación permanece abierta: '+err.message);}}; $('search').oninput=render; $('days').onchange=render;
 $('newBtn').onclick=()=>{ $('editForm').reset();resetClientMatch();$('editId').value='';$('initial').value=0;$('initial').disabled=false;$('startDate').value=dateString(new Date());$('startDate').disabled=false;$('startDate').required=true;$('startDateHelp').textContent='';$('due').value=addMonth($('startDate').value);$('editTitle').textContent='Nuevo separado';$('editError').textContent='';$('editor').showModal(); };
