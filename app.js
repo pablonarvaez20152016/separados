@@ -38,7 +38,7 @@ function dateString(d) { return [d.getFullYear(), String(d.getMonth()+1).padStar
 function addMonth(date) { const [y,m,d]=date.split('-').map(Number); const last=new Date(y,m+1,0).getDate(); return dateString(new Date(y,m,Math.min(d,last))); }
 function addDays(date, days) { const [y,m,d]=date.split('-').map(Number); return dateString(new Date(y,m-1,d+days)); }
 function remaining(date) { const [y,m,d]=date.split('-').map(Number); return Math.floor(Date.UTC(y,m-1,d)/86400000)-dayNumber(new Date()); }
-function status(r){ if(balance(r)===0)return ['Pagado','']; const n=remaining(r.due); return n<0?[`Vencido hace ${-n} día(s)`,'late']:n===0?['Vence hoy','late']:n<=Number($('days').value)?[`Vence en ${n} día(s)`,'warn']:[`Vence en ${n} días`,'']; }
+function status(r){ if(balance(r)===0)return [r.total === 0 ? 'Sin saldo' : 'Pagado','']; const n=remaining(r.due); return n<0?[`Vencido hace ${-n} día(s)`,'late']:n===0?['Vence hoy','late']:n<=Number($('days').value)?[`Vence en ${n} día(s)`,'warn']:[`Vence en ${n} días`,'']; }
 function formatPesos(digits) {
   return digits.replace(/^0+(?=\d)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
@@ -402,7 +402,7 @@ const garmentTotal = () => garments.reduce((sum, item) => sum + garmentValue(ite
 function refreshGarmentSubtotal() {
   const item = garmentDraft();
   const subtotal = $('garmentSubtotal');
-  subtotal.hidden = !(item.quantity > 1 && item.unitPrice > 0 && Number.isSafeInteger(garmentValue(item)));
+  subtotal.hidden = !(item.quantity > 1 && item.unitPrice >= 0 && Number.isSafeInteger(garmentValue(item)));
   subtotal.textContent = subtotal.hidden ? '' : 'Subtotal de esta prenda: ' + money(garmentValue(item));
   $('garmentError').textContent = '';
 }
@@ -440,10 +440,10 @@ function addGarment() {
   const item = garmentDraft();
   const subtotal = garmentValue(item);
   const previous = editingGarment ? garmentValue(editingGarment) : 0;
-  if (!item.description || item.quantity < 1 || item.unitPrice < 1 ||
+  if (!item.description || item.quantity < 1 || item.unitPrice < 0 ||
       !Number.isSafeInteger(item.quantity) || !Number.isSafeInteger(item.unitPrice) ||
       !Number.isSafeInteger(subtotal) || !Number.isSafeInteger(garmentTotal() - previous + subtotal)) {
-    $('garmentError').textContent = 'Ingresa la prenda, una cantidad entera y un valor unitario mayor que cero.';
+    $('garmentError').textContent = 'Ingresa la prenda, una cantidad entera mayor que cero y un valor unitario de $0 o más.';
     return false;
   }
   if (editingGarment) garments = garments.map(current => current === editingGarment ? item : current);
@@ -529,8 +529,8 @@ $('editForm').onsubmit = async event => {
     $('initial').focus();
     return;
   }
-  if (!Number.isSafeInteger(total) || total < 1 || paid > total) {
-    error.textContent = 'El total debe ser mayor que cero y cubrir los abonos.';
+  if (!Number.isSafeInteger(total) || total < 0 || !Number.isSafeInteger(paid) || paid < 0 || paid > total) {
+    error.textContent = 'El total debe ser de $0 o más y cubrir los abonos.';
     return;
   }
 
